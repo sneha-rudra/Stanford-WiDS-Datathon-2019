@@ -1,0 +1,5 @@
+python preprocessing.py
+
+python retrain.py --image_dir ./train_subset --output_labels='./output_labels.txt' --output_graph=./models/output_graph.pb
+
+python auc_roc.py 
