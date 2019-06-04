@@ -1,0 +1,8 @@
+Azure Data Science Virtual Machine Specifications
+
+
+1. Operating System = Linux
+2. Location = West US
+3. Size = 4 vCPUs; 14 GiB memory
+4. OS Disk = Premium SSD; 50 GiB
+5. Data Disk = Premium SSD; 100 GiB
