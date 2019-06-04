@@ -1,0 +1,5 @@
+Data set details and Results
+
+1. Training set size 1000 images; 500 images with oil palm and 500 images without oil palm 
+2. Test set size 942 images; 442 images with oil palm and 500 images without oil palm
+3. ROC AUC Score (Receiver Operating Characteristic; Area under the Curve score) = 0.9785565610859729
