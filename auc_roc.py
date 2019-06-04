@@ -26,17 +26,15 @@ import tensorflow as tf
 
 
 import os
-#os.chdir('C:\\Users\\pc\\Downloads\\wids\\widsdatathon2019')
 
 def prepareDict():
 	fname= 'traininglabels.csv'
 
 	with open(fname) as f:
     		content = f.readlines()
-	# you may also want to remove whitespace characters like `\n` at the end of each line
+
 	content = [x.strip() for x in content]
 
-	#print content[1].split(',')
 
 	dict ={'0':[],'1':[]}
 
@@ -45,7 +43,7 @@ def prepareDict():
                         dict['0'].append(item.split(',')[0])
         	elif item.split(',')[1]== '1':
                         dict['1'].append(item.split(',')[0])
-	#print(dict['0'][0])
+
 	return dict
 
 
@@ -99,35 +97,17 @@ def load_labels(label_file):
   return label
 
 
-#if __name__ == "__main__":
-#  dic = prepareDict()
-#  totalInstances = len(dic['0']) + len(dic['1'])
-#  #print(totalInstances)
-#  testInstances = dic['0'][500:] + dic['1'][500:]
-#  #print(len(testInstances))
-#
-#  ytrue = []
-#  yscores = []
-#  for i in range(500,len(dic['0'])):
-#    ytrue.append(0)
-#
-#  for i in range(500,len(dic['1'])):
-#    ytrue.append(1)
-#      	
-#  print(len(ytrue))
-#  print(findLabel("img_112352018.jpg"))
 
 def findLabel(fileName):
-  file_name = "./train_images/" + fileName#dic['1'][500]#"img_112352018.jpg" #"tensorflow/examples/label_image/data/grace_hopper.jpg"
-  model_file = "./models/output_graph.pb" #\
-    #"tensorflow/examples/label_image/data/inception_v3_2016_08_28_frozen.pb"
-  label_file = "./models/output_labels.txt" #"tensorflow/examples/label_image/data/imagenet_slim_labels.txt"
+  file_name = "./train_images/" + fileName
+  model_file = "./models/output_graph.pb" 
+  label_file = "./models/output_labels.txt" 
   input_height = 299
   input_width = 299
   input_mean = 0
   input_std = 255
   input_layer = "Placeholder"
-  output_layer = "final_result"#"InceptionV3/Predictions/Reshape_1"
+  output_layer = "final_result"
 
   parser = argparse.ArgumentParser()
   parser.add_argument("--image", help="image to be processed")
@@ -181,29 +161,19 @@ def findLabel(fileName):
 
   top_k = results.argsort()[-5:][::-1]
   labels = load_labels(label_file)
-  #print("top_k")
-  #print(top_k)
-  #for i in top_k:
-  #  print(labels[i], results[i])
-  
-  #if labels[0] == 'yes':
-  #  print(1)
-  #elif labels[0] == 'no':
-  #  print(0)
   return top_k[0]
-  #prepareDict()
 
 
 if __name__ == "__main__":
   dic = prepareDict()
   totalInstances = len(dic['0']) + len(dic['1'])
-  #print(totalInstances)
+
   testInstances = dic['0'][500:] + dic['1'][500:]
-  #print(len(testInstances))
+
 
   ytrue = []
   yscores = []
-  for i in range(500, 1000):#len(dic['0'])):
+  for i in range(500, 1000):
     ytrue.append(0)
     filename = dic['0'][i]
     yscores.append(findLabel(filename))
@@ -217,5 +187,5 @@ if __name__ == "__main__":
 
   print(len(ytrue))
   print(roc_auc_score(ytrue, yscores))
-  print(findLabel("img_112352018.jpg"))
+ 
 
