@@ -1,0 +1,15 @@
+Deep Learning Architecture and Transfer Learning Parameters
+
+1. Inception V3 is a neural network architecture trained on ImageNet (ILSVRC-2012-CLS)
+2. Output for each image in the batch is a feature vector of size num_features = 2048
+3. Size of the input image is fixed to height x width = 299 x 299 pixels
+4. Input images are expected to have color values in the range [0,1], following the common image input conventions
+5. Maximum number of images per class = 2**27 -1
+6. Number of training steps = 4000
+7. Learning rate = 0.01
+8. Percentage of images to use as test set = 10 
+9. Percentage of images to use as validation set = 10
+10. Number of images to train on at a time = 100
+11. Test batch size = Entire test set
+12. Validation batch size = 100 images
+13. Tensorflow hub module = https://tfhub.dev/google/imagenet/inception_v3/feature_vector/3
