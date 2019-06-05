@@ -1,3 +1,3 @@
 1. Use entire training set of size 15k images and the entire test set of size 6k images
-2. Data Augmentation
+2. Data Augmentation; Strategies to deal with class imbalance- only 942 of 15244 images have oil palm
 3. Try other pretrained models and k-cross validation
